@@ -1,0 +1,439 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9; /* Fondo general claro */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header - Ahora con fondo claro */
+.header {
+    background-color: #ffffff; /* Blanco puro */
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    border-bottom: 1px solid #e0e0e0; /* Borde suave */
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo-header {
+    width: 220px;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #ffffff;
+    padding: 8rem 0 4rem;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #0a3d62; /* Azul institucional para el texto */
+    font-size: 2.5rem;
+}
+
+/* Footer - Fondo claro */
+.footer {
+    background-color: #f5f5f5; /* Gris muy claro */
+    color: #333; /* Texto oscuro para contraste */
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0; /* Borde superior sutil */
+}
+
+.logo-footer {
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-header {
+        width: 150px;
+    }
+
+    .hero {
+        padding: 6rem 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Header con imagen de portada */
+.header {
+    background-image: url('../img/portadas/portada-escritorio.webp');
+    background-size: cover; /* Cubre todo el espacio */
+    background-position: right center; /* Enfoca el centro de la imagen */
+    background-repeat: no-repeat;
+    height: 600px; /* Altura fija para escritorio */
+    padding: 1rem 0;
+    position: relative;
+}
+
+/* Ajustes para tablet */
+@media (max-width: 1024px) {
+    .header {
+        background-image: url('../img/portadas/portada-tablet.webp');
+        height: 400px;
+    }
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+    .header {
+        background-image: url('../img/portadas/portada-movil.webp');
+        height: 350px;
+    }
+}
+
+@media 
+    (-webkit-min-device-pixel-ratio: 2), 
+    (min-resolution: 192dpi) {
+    .header {
+        background-image: url('../img/portadas/portada-retina.webp');
+    }
+}
+
+/* Efecto overlay oscuro para mejorar legibilidad del texto (opcional) */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Ajusta la opacidad según necesites */
+    z-index: 0;
+}
+
+/* Asegura que el logo y otros elementos estén por encima del overlay */
+.logo-header, 
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* === Menú Nav (Nuevos estilos) === */
+.navbar {
+    position: sticky; /* Fijo al hacer scroll, pero debajo del header */
+    top: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Mismo z-index que el header para consistencia */
+    padding: 1rem 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #0a3d62; /* Azul institucional (ajusta según tu paleta) */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    color: #f6b93b; /* Amarillo al hover */
+    background-color: rgba(10, 61, 98, 0.05);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* === Estilos del Botón Hamburguesa === */
+.hamburger {
+    display: none; /* Oculta en escritorio */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #0a3d62;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Menú móvil (oculto por defecto) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Muestra solo en móviles */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Oculta el menú */
+        width: 80%;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        left: 0; /* Muestra el menú */
+    }
+
+    /* Animación del botón a "X" */
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+/* ======= ESTILOS SWIPER ======= */
+.swiper {
+    padding: 20px 0 40px !important; /* Sobreescribe estilos por defecto */
+    width: 100%;
+}
+
+.swiper-wrapper {
+    align-items: stretch; /* Para tarjetas de igual altura */
+}
+
+.swiper-slide {
+    height: auto; /* Permite que las tarjetas crezcan */
+    display: flex; /* Para igualar alturas */
+}
+
+/* Botones de navegación */
+.swiper-button-next, 
+.swiper-button-prev {
+    color: #0a3d62 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+    font-size: 20px !important;
+}
+
+/* Paginación */
+.swiper-pagination-bullet-active {
+    background: #0a3d62 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: none !important;
+    }
+    
+    .featured-news {
+        padding: 2rem 0;
+    }
+}
+
+
+/* Estilos para la sección de noticias */
+        .seccion-noticias {
+            padding: 60px 0;
+        }
+        
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .titulo-seccion h2 {
+            font-size: 2.5rem;
+            color: #0a3d62;
+        }
+        
+        .titulo-seccion::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #f6b93b;
+        }
+        
+        /* Contenedor de noticias */
+        .noticias-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        /* Item de noticia */
+        .noticia-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .noticia-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Contenido de noticia - dos columnas en escritorio */
+        .noticia-contenido {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .noticia-imagen {
+            position: relative;
+            overflow: hidden;
+            height: 0;
+            padding-top: 70%; /* Relación de aspecto (ajustar según necesidad) */
+        }
+        
+        .noticia-imagen img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .noticia-item:hover .noticia-imagen img {
+            transform: scale(1.05);
+        }
+        
+        .noticia-texto {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .noticia-fecha {
+            color: #f6b93b;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .noticia-titulo {
+            font-size: 1.8rem;
+            color: #0a3d62;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .noticia-descripcion {
+            margin-bottom: 25px;
+            line-height: 1.7;
+            color: #555;
+            text-align: justify;
+            text-indent: 2em;
+        }
+        
+        .participantes {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #f6b93b;
+        }
+        
+        .participantes p {
+            margin: 5px 0;
+        }
+        
+        .noticia-destacado {
+            font-style: italic;
+            font-weight: 600;
+            color: #0a3d62;
+            margin-top: 10px;
+        }
+        
+        /* Responsive - Una columna en móvil */
+        @media (max-width: 768px) {
+            .noticia-contenido {
+                grid-template-columns: 1fr;
+            }
+            
+            .titulo-seccion h2 {
+                font-size: 2rem;
+            }
+            
+            .noticia-titulo {
+                font-size: 1.5rem;
+            }
+            
+            .noticia-imagen {
+                padding-top: 60%; /* Relación de aspecto para móvil */
+            }
+        }
+        
+        /* Separador entre noticias */
+        .noticia-separador {
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
