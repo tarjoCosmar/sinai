@@ -1,4 +1,4 @@
 ```yamldeployment:
   tasks:
-- export DEPLOYPATH=/public_html/sinai.gob.ec/
+- export DEPLOYPATH=/home/mksiste1/public_html/sinai.gob.ec/
 - cp -r * $DEPLOYPATH
