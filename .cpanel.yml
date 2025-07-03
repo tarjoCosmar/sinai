@@ -1,0 +1,4 @@
+```yamldeployment:
+  tasks:
+- export DEPLOYPATH=/public_html/sinai.gob.ec/
+- cp -r * $DEPLOYPATH
