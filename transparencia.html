@@ -8,36 +8,33 @@
 </head>
 <body>
 
-  <header class="cover"> 
-    <div class="cover-image"></div>
-        <div class="cover-content">
-        <h1>GAD Parroquial de Río Blanco</h1>
-        <p>Página oficial de la Junta Parroquial de Río Blanco</p>
-        <a href="transparencia/RENDICIÓN DE CUENTAS 2023 PWEB.pdf" class="btn btn-primary">Rendición de cuentas 2023</a>
-    </div>  
-  </header>
+  <!-- Header con imagen de portada -->
+    <header class="header">
+        <div class="container">
+            <img src="img/logos/logo-header.png" alt="GAD Parroquial de Sinaí" class="logo logo-header">
+        </div>
+    </header>
 
-
-  <div class="container"> 
+    <!-- Menú de navegación sticky (debajo del header) -->
     <nav class="navbar">
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li>
-          <a href="nosotros.html">Sobre Nosotros</a>
-          <ul class="submenu">
-            <li><a href="#">Historia</a></li>
-            <li><a href="#">Equipo</a></li>
-            <li><a href="#">Misión y Visión</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="transparencia.html">Transparencia</a>
-        </li>
-        <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
+        <div class="container">
+            <!-- Botón hamburguesa (solo visible en móviles) -->
+            <button class="hamburger" aria-label="Menú">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Menú principal -->
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="transparencia.html">Transparencia</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
     </nav>
-  </div> 
 
   <div class="container">
     <div class="column">
