@@ -1,0 +1,22 @@
+name: Deploy to cPanel via FTP
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.3
+        with:
+          server: ftp.sinai.gob.ec # O usa la IP del servidor
+          username: ftpuser@sinai.gob.ec # Reemplaza con tu usuario FTP
+          password: ${{ secrets.FTP_PASSWORD }} # Contraseña almacenada en GitHub Secrets
+          local-dir: ./ # O "dist/" si usas un framework
+          server-dir: /home/mksiste1/public_html/sinai.gob.ec/
+          exclude: |
+            .git*
+            .cpanel.yml
