@@ -238,36 +238,6 @@ body {
     }
 }
 
-/* ======= ESTILOS SWIPER ======= */
-.swiper {
-    padding: 20px 0 40px !important; /* Sobreescribe estilos por defecto */
-    width: 100%;
-}
-
-.swiper-wrapper {
-    align-items: stretch; /* Para tarjetas de igual altura */
-}
-
-.swiper-slide {
-    height: auto; /* Permite que las tarjetas crezcan */
-    display: flex; /* Para igualar alturas */
-}
-
-/* Botones de navegación */
-.swiper-button-next, 
-.swiper-button-prev {
-    color: #0a3d62 !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 50% !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
-}
-
-.swiper-button-next::after, 
-.swiper-button-prev::after {
-    font-size: 20px !important;
-}
 
 /* Paginación */
 .swiper-pagination-bullet-active {
@@ -436,4 +406,87 @@ body {
             height: 1px;
             background: #eee;
             margin: 30px 0;
+        }
+
+
+/* Estilos para el carrusel */
+.featured-news {
+            padding: 6rem 0 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #0a3d62;
+            font-size: 2.5rem;
+        }
+        
+        .carousel-section {
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 500px; /* Altura fija para escritorio */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .swiper-slide {
+             text-align: center;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+       .swiper-pagination-bullet-active {
+            background: #0a3d62 !important;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #0a3d62;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #083051;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0a3d62;
+            color: #0a3d62;
+        }
+        
+        .btn-outline:hover {
+            background: #0a3d62;
+            color: #fff;
+        }
+
+        .text-center {
+            text-align: center;
+        };
+
+        /* Responsive: en móviles, reducimos la altura */
+        @media (max-width: 768px) {
+            .swiper-container {
+            height: 300px;
+            }
         }

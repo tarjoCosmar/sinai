@@ -19,4 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         });
     });
+
+    // Inicializar Swiper
+    const swiper = new Swiper('.swiper', {
+    loop: true,
+    slidesPerView: 1,  // Mostrar solo un slide a la vez
+    spaceBetween: 0,   // Sin espacio entre slides
+    pagination: { /*...*/ },
+    navigation: { /*...*/ },
+    autoplay: { /*...*/ },
+    effect: 'slide',   // Efecto deslizante
+    speed: 800         // Velocidad de transición
 });
+});
+
+
+
+
+
