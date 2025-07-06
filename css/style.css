@@ -455,7 +455,7 @@ body {
         .btn {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: #0a3d62;
+            background: #f6b93b;
             color: #fff;
             border-radius: 4px;
             text-decoration: none;
@@ -465,7 +465,7 @@ body {
         }
         
         .btn:hover {
-            background: #083051;
+            background: #0a3d62;
             transform: translateY(-2px);
         }
         
@@ -477,7 +477,7 @@ body {
         
         .btn-outline:hover {
             background: #0a3d62;
-            color: #fff;
+            color: #f6b93b;
         }
 
         .text-center {

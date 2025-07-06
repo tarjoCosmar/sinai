@@ -2,12 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
+    // Menú hamburguesa
     hamburger.addEventListener('click', () => {
-        // Alternar clases "active"
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
-        
-        // Bloquear scroll cuando el menú está abierto
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
@@ -20,19 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Inicializar Swiper
+    // Inicializar Swiper sin botones de navegación
     const swiper = new Swiper('.swiper', {
-    loop: true,
-    slidesPerView: 1,  // Mostrar solo un slide a la vez
-    spaceBetween: 0,   // Sin espacio entre slides
-    pagination: { /*...*/ },
-    navigation: { /*...*/ },
-    autoplay: { /*...*/ },
-    effect: 'slide',   // Efecto deslizante
-    speed: 800         // Velocidad de transición
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        effect: 'slide',
+        speed: 800
+    });
 });
-});
-
 
 
 
