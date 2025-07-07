@@ -490,3 +490,117 @@ body {
             height: 300px;
             }
         }
+
+
+        /* Estilos generales para el contenedor (Transparencia)*/
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las columnas */
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+.column:first-child {
+    margin-right: 20px;
+}
+
+/* Estilos para el título y la descripción */
+h2 {
+    font-family: 'Arial', sans-serif;
+    color: #004080;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilos para el acordeón */
+details {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+summary {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #004080;
+    background-color: #e6f0ff;
+    border-bottom: 1px solid #ddd;
+}
+
+summary:hover {
+    background-color: #cce0ff;
+}
+
+/* Estilos para los niveles anidados */
+.tabulacion {
+    margin-left: 20px;
+}
+
+.tabulacion_2 {
+    margin-left: 40px;
+}
+
+.tabulacion_3 {
+    margin-left: 60px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Estilos para los botones */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+button img {
+    vertical-align: middle;
+}
+
+/* Estilos para los enlaces */
+a {
+    text-decoration: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .column {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .column:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Ajustar el tamaño de los botones en móviles */
+    button img {
+        width: 20px;
+        height: 20px;
+    }
+}
