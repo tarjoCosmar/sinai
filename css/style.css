@@ -586,7 +586,7 @@ a {
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
-    .container {
+    .container_transparencia {
         flex-direction: column;
     }
 
