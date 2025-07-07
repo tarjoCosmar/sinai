@@ -518,7 +518,7 @@ body {
 /* Estilos para el título y la descripción */
 h2 {
     font-family: 'Arial', sans-serif;
-    color: #004080;
+    color: #0a3d62;
     font-size: 24px;
     margin-bottom: 10px;
 }
@@ -541,13 +541,14 @@ summary {
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
-    color: #004080;
+    color: #0a3d62;
     background-color: #e6f0ff;
     border-bottom: 1px solid #ddd;
 }
 
 summary:hover {
-    background-color: #cce0ff;
+    color: #f6b93b; /* Amarillo al hover */
+    background-color: rgba(10, 61, 98, 0.05);
 }
 
 /* Estilos para los niveles anidados */
