@@ -493,7 +493,7 @@ body {
 
 
         /* Estilos generales para el contenedor (Transparencia)*/
-.container {
+.container_transparencia {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -542,7 +542,7 @@ summary {
     cursor: pointer;
     font-weight: bold;
     color: #0a3d62;
-    background-color: #e6f0ff;
+    background-color: #f5f7fa;
     border-bottom: 1px solid #ddd;
 }
 
