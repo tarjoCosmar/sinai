@@ -630,3 +630,243 @@ a {
     transform: scale(1.03);
     transition: transform 0.5s ease;
 }
+
+
+/* SECCIÓN NOSOTROS - EQUIPO GAD */
+.team {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f0f4f8 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.team::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3d62, #f6b93b);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.team h2 {
+    text-align: center;
+    color: #0a3d62;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.team h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #0a3d62, #f6b93b);
+    border-radius: 2px;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.member {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(10, 61, 98, 0.1);
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(10, 61, 98, 0.2);
+}
+
+.member-img-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.member-img-container::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 61, 98, 0.7), transparent);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.member:hover .member-img-container::before {
+    opacity: 1;
+}
+
+.member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.member:hover img {
+    transform: scale(1.05);
+}
+
+.member h3 {
+    color: #0a3d62;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    padding: 0 20px;
+    transition: color 0.3s ease;
+}
+
+.member:hover h3 {
+    color: #f6b93b;
+}
+
+.member p {
+    color: #555;
+    font-size: 1.1rem;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.member p::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #f6b93b;
+    transition: width 0.3s ease;
+}
+
+.member:hover p::after {
+    width: 80px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 20px;
+    margin-top: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.member:hover .contact-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a3d62;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+    background: #f6b93b;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Estilo para diferenciar autoridades */
+.team-members:first-of-type .member {
+    border-top: 4px solid #0a3d62;
+}
+
+/* Estilo para diferenciar trabajadores */
+.team-members:last-of-type .member {
+    border-top: 4px solid #f6b93b;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .team-members {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team {
+        padding: 60px 0;
+    }
+    
+    .team h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .team-members {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 60px;
+    }
+    
+    .member {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .team h2 {
+        font-size: 1.8rem;
+    }
+    
+    .member h3 {
+        font-size: 1.4rem;
+    }
+}
+
+.member-img-container {
+    position: relative;
+    height: 300px; /* Altura fija para consistencia */
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.member-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; /* Enfoca en el rostro */
+    transition: transform 0.5s ease;
+}
