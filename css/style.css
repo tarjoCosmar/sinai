@@ -632,12 +632,12 @@ a {
 }
 
 
-/* SECCIÓN NOSOTROS - EQUIPO GAD */
+/* SECCIÓN NOSOTROS - EQUIPO GAD CORREGIDO */
 .team {
     background: linear-gradient(135deg, #f9f9f9 0%, #f0f4f8 100%);
-    padding: 80px 0;
+    padding: 60px 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Cambiado de hidden a visible */
 }
 
 .team::before {
@@ -659,8 +659,8 @@ a {
 .team h2 {
     text-align: center;
     color: #0a3d62;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
+    font-size: 2.2rem; /* Reducido ligeramente */
+    margin-bottom: 40px; /* Reducido */
     position: relative;
     padding-bottom: 15px;
 }
@@ -679,32 +679,33 @@ a {
 
 .team-members {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 40px;
-    margin-bottom: 80px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Más flexible */
+    gap: 30px; /* Reducido */
+    margin-bottom: 60px; /* Reducido */
 }
 
 .member {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(10, 61, 98, 0.1);
+    box-shadow: 0 5px 15px rgba(10, 61, 98, 0.1); /* Más suave */
     transition: all 0.4s ease;
     text-align: center;
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 25px; /* Reducido */
+    display: flex;
+    flex-direction: column;
 }
 
 .member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(10, 61, 98, 0.2);
+    transform: translateY(-5px); /* Menos movimiento */
+    box-shadow: 0 10px 25px rgba(10, 61, 98, 0.15);
 }
 
 .member-img-container {
     position: relative;
-    height: 220px;
+    height: 250px; /* Altura reducida */
     overflow: hidden;
-    margin-bottom: 25px;
 }
 
 .member-img-container::before {
@@ -714,7 +715,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(10, 61, 98, 0.7), transparent);
+    background: linear-gradient(to top, rgba(10, 61, 98, 0.5), transparent); /* Más transparente */
     z-index: 1;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -728,19 +729,27 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform 0.5s ease;
 }
 
 .member:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03); /* Menos zoom */
+}
+
+.member-content {
+    padding: 20px 15px; /* Asegura espacio para el texto */
+    flex-grow: 1; /* Permite que crezca según contenido */
+    display: flex;
+    flex-direction: column;
 }
 
 .member h3 {
     color: #0a3d62;
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* Reducido ligeramente */
     margin-bottom: 8px;
-    padding: 0 20px;
     transition: color 0.3s ease;
+    line-height: 1.3;
 }
 
 .member:hover h3 {
@@ -749,54 +758,49 @@ a {
 
 .member p {
     color: #555;
-    font-size: 1.1rem;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    font-size: 1rem; /* Reducido para más espacio */
+    margin-bottom: 15px;
     position: relative;
+    line-height: 1.5;
 }
 
 .member p::after {
     content: "";
     position: absolute;
-    bottom: -15px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 40px;
     height: 2px;
     background: #f6b93b;
     transition: width 0.3s ease;
 }
 
 .member:hover p::after {
-    width: 80px;
+    width: 60px;
 }
 
 .contact-info {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 0 20px;
-    margin-top: 15px;
-    opacity: 0;
-    transform: translateY(20px);
+    gap: 12px;
+    margin-top: 10px;
+    opacity: 1; /* Siempre visible */
+    transform: translateY(0); /* Sin transformación */
     transition: all 0.4s ease;
-}
-
-.member:hover .contact-info {
-    opacity: 1;
-    transform: translateY(0);
+    padding: 5px 0;
 }
 
 .contact-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: #f0f4f8;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #0a3d62;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -816,60 +820,93 @@ a {
     border-top: 4px solid #f6b93b;
 }
 
+/* Badge para distinguir autoridades */
+.authority-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #0a3d62;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Badge para trabajadores */
+.staff-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f6b93b;
+    color: #0a3d62;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .team-members {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 25px;
+    }
+    
+    .member-img-container {
+        height: 230px;
     }
 }
 
 @media (max-width: 768px) {
     .team {
-        padding: 60px 0;
+        padding: 50px 0;
     }
     
     .team h2 {
         font-size: 2rem;
-        margin-bottom: 40px;
+        margin-bottom: 35px;
     }
     
     .team-members {
         grid-template-columns: 1fr;
         max-width: 500px;
-        margin: 0 auto 60px;
+        margin: 0 auto 50px;
+        gap: 30px;
     }
     
     .member {
-        max-width: 400px;
+        max-width: 380px;
         margin: 0 auto;
+    }
+    
+    .member-img-container {
+        height: 280px; /* Más alto en móviles */
     }
 }
 
 @media (max-width: 480px) {
     .team h2 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
     
     .member h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+    }
+    
+    .member p {
+        font-size: 0.95rem;
+    }
+    
+    .member-img-container {
+        height: 250px;
     }
 }
 
-.member-img-container {
-    position: relative;
-    height: 300px; /* Altura fija para consistencia */
-    overflow: hidden;
-    margin-bottom: 25px;
-}
-
-.member-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center; /* Enfoca en el rostro */
-    transition: transform 0.5s ease;
-}
 
 /* Estilos específicos para la sección de contacto */
 .contact_info {
