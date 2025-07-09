@@ -35,27 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 800
     });
 
-   // formulario 
-function doPost(e) {
-  const data = JSON.parse(e.postData.contents);
-  const destinatario = "tu-correo@gadsinai.gob.ec";
-  const asunto = `Formulario GAD: ${data.asunto}`;
-  
-  const cuerpo = `
-  Lugar/fecha: ${data.lugarFecha}
-  Mensaje: ${data.cuerpo}
-  
-  Remitente:
-  Nombre: ${data.nombre}
-  Email: ${data.email}
-  Teléfono: ${data.telefono}
-  `;
-
-  MailApp.sendEmail(destinatario, asunto, cuerpo);
-  return ContentService.createTextOutput("Éxito");
-}
-
-
+   
 });
 
 

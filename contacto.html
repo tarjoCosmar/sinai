@@ -6,7 +6,6 @@
     <title>Contacto GAD Parroquial Sinaí</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/logos/favicon.png" type="image/png">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
   <!-- Header con imagen de portada -->
@@ -38,7 +37,7 @@
     </nav>
 
   <!-- Contenido contacto -->
-  <div class="contact_info">
+  <div class="contact_info">+
     <div class="container">
       <div class="contact-grid">
         <!-- Información de contacto -->
@@ -62,57 +61,57 @@
         </div>
 
         <!-- Formulario de contacto formal -->
-        <div class="contact-form">
-          <h2>Formulario de Contacto Oficial</h2>
-          <p class="form-instructions">Para comunicaciones formales con el GAD Parroquial Sinaí, complete el siguiente formulario:</p>
-          
-          <form class="formal-form" action="#" method="POST">
-            <div class="form-group">
-              <label for="lugar-fecha">Lugar y fecha:</label>
-              <input type="text" id="lugar-fecha" name="lugar-fecha" required placeholder="Ej: Sinaí, a 12 de julio de 2025">
-            </div>
-            
-            <div class="form-group">
-              <label for="asunto">Asunto:</label>
-              <input type="text" id="asunto" name="asunto" required placeholder="Ej: Solicitud de información">
-            </div>
-            
-            <div class="form-group">
-              <label for="destinatario">Destinatario:</label>
-              <input type="text" id="destinatario" name="destinatario" required value="GAD Parroquial Sinaí" readonly>
-            </div>
-            
-            <div class="form-group">
-              <label for="cuerpo">Mensaje:</label>
-              <textarea id="cuerpo" name="cuerpo" rows="6" required placeholder="Desarrolle aquí el motivo de su comunicación de manera clara y concisa..."></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="nombre">Nombre completo:</label>
-              <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez López">
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Correo electrónico:</label>
-              <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com">
-            </div>
-            
-            <div class="form-group">
-              <label for="telefono">Teléfono de contacto:</label>
-              <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +593 98 123 4567">
-            </div>
-            
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="privacidad" name="privacidad" required>
-              <label for="privacidad">Acepto la política de privacidad y tratamiento de datos personales.</label>
-            </div>
-            
-            <div class="form-actions">
-              <button type="submit" class="btn-enviar">Enviar Comunicación</button>
-              <button type="reset" class="btn-limpiar">Limpiar Formulario</button>
-            </div>
-          </form>
-        </div>
+<div class="contact-form">
+  <h2>Formulario de Contacto Oficial</h2>
+  <p class="form-instructions">Para comunicaciones formales con el GAD Parroquial Sinaí, complete el siguiente formulario:</p>
+  
+  <form id="formalForm" class="formal-form">
+    <div class="form-group">
+      <label for="lugar-fecha">Lugar y fecha:</label>
+      <input type="text" id="lugar-fecha" name="lugar-fecha" required placeholder="Ej: Sinaí, a 12 de julio de 2025">
+    </div>
+    
+    <div class="form-group">
+      <label for="asunto">Asunto:</label>
+      <input type="text" id="asunto" name="asunto" required placeholder="Ej: Solicitud de información">
+    </div>
+    
+    <div class="form-group">
+      <label for="destinatario">Destinatario:</label>
+      <input type="text" id="destinatario" name="destinatario" required value="GAD Parroquial Sinaí" readonly>
+    </div>
+    
+    <div class="form-group">
+      <label for="cuerpo">Mensaje:</label>
+      <textarea id="cuerpo" name="cuerpo" rows="6" required placeholder="Desarrolle aquí el motivo de su comunicación de manera clara y concisa..."></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez López">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com">
+    </div>
+    
+    <div class="form-group">
+      <label for="telefono">Teléfono de contacto:</label>
+      <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +593 98 123 4567">
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="privacidad" name="privacidad" required>
+      <label for="privacidad">Acepto la política de privacidad y tratamiento de datos personales.</label>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-enviar">Enviar Comunicación</button>
+      <button type="reset" class="btn-limpiar">Limpiar Formulario</button>
+    </div>
+  </form>
+</div>
       </div>
     </div>
   </div>
@@ -134,32 +133,32 @@
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/nav.js"></script>
   <script>
-document.querySelector('.formal-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const formData = {
-    lugarFecha: e.target.elements['lugar-fecha'].value,
-    asunto: e.target.elements['asunto'].value,
-    cuerpo: e.target.elements['cuerpo'].value,
-    nombre: e.target.elements['nombre'].value,
-    email: e.target.elements['email'].value,
-    telefono: e.target.elements['telefono'].value
-  };
-
-  try {
-    const response = await fetch('URL_DE_TU_SCRIPT', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' }
+    // Manejo del formulario
+    document.getElementById('formalForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Deshabilitar el botón de envío para evitar múltiples envíos
+      const submitButton = this.querySelector('.btn-enviar');
+      submitButton.disabled = true;
+      
+      // Obtener los datos del formulario
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => { data[key] = value });
+      
+      // Enviar los datos al servidor
+      google.script.run
+        .withSuccessHandler((response) => {
+          alert('¡Formulario enviado exitosamente! Recibirá una confirmación pronto.');
+          this.reset();
+          submitButton.disabled = false;
+        })
+        .withFailureHandler((error) => {
+          alert('Error al enviar el formulario: ' + error.message);
+          submitButton.disabled = false;
+        })
+        .processForm(data);
     });
-    
-    if (response.ok) window.location.href = 'gracias.html';
-    else window.location.href = 'error.html';
-  } catch (error) {
-    console.error('Error:', error);
-    window.location.href = 'error.html';
-  }
-});
-</script>
+  </script>
 </body>
 </html>
