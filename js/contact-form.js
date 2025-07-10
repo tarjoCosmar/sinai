@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusMessage = document.getElementById('status-message');
     const loader = document.getElementById('loader');
     
-    // Si no hay formulario en esta página, salimos
     if (!contactForm) return;
     
-    // URL de tu Google Apps Script (REEMPLAZA ESTO)
+    // URL de tu Google Apps Script
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhZgIWdYAQLiJrk8HC9hAWoGaV1XJbnu-J_V7kTbEa6ERsTWrhSubHoVkNtaP--_ly/exec';
     
     contactForm.addEventListener('submit', async function(e) {
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statusMessage.style.display = 'none';
         
         try {
-            // Recolectar datos del formulario
+            // Recolectar los datos del formulario
             const formData = {
                 lugarFecha: document.getElementById('lugar-fecha').value,
                 asunto: document.getElementById('asunto').value,
@@ -51,18 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(formData)
             });
             
-            const result = await response.text();
+            // Manejar respuesta JSON
+            const result = await response.json();
             
-            // Manejar respuesta
-            if (result === 'Éxito') {
-                showStatusMessage('¡Mensaje enviado con éxito! Te responderemos a la brevedad.', 'success');
+            if (result.status === "success") {
+                showStatusMessage(result.message, 'success');
                 contactForm.reset();
             } else {
-                throw new Error(result);
+                throw new Error(result.message);
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            showStatusMessage('Error: ' + error.message, 'error');
+            showStatusMessage(error.message || 'Error de conexión. Por favor, intente nuevamente.', 'error');
         } finally {
             loader.style.display = 'none';
         }
@@ -70,12 +69,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para mostrar mensajes de estado
     function showStatusMessage(message, type) {
-        statusMessage.textContent = message;
+        statusMessage.innerHTML = message;
         statusMessage.className = 'status-message'; // Resetear clases
         statusMessage.classList.add(`status-${type}`);
         statusMessage.style.display = 'block';
         
         // Desplazar la vista al mensaje
         statusMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Ocultar el mensaje después de 10 segundos (solo para éxito)
+        if (type === 'success') {
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 10000);
+        }
     }
 });
+
+// Función para manejar errores de la API
+function handleApiError(response) {
+    if (!response.ok) {
+        // Error HTTP (404, 500, etc.)
+        return `Error ${response.status}: ${response.statusText}`;
+    }
+    return null;
+}
+
+// Luego modifica el bloque de fetch:
+const response = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+});
+
+// Verificar errores HTTP
+const httpError = handleApiError(response);
+if (httpError) {
+    throw new Error(httpError);
+}
+
+// Procesar respuesta JSON
+const result = await response.json();
