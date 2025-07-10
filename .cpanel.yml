@@ -1,5 +1,0 @@
---- 
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/mksiste1/public_html/sinai.gob.ec
-    - cp -r * $DEPLOYPATH
