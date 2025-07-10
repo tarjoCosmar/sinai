@@ -1,4 +1,3 @@
-// contact-form.js
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     const statusMessage = document.getElementById('status-message');
@@ -7,9 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!contactForm) return;
     
     // URL de tu Google Apps Script
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhZgIWdYAQLiJrk8HC9hAWoGaV1XJbnu-J_V7kTbEa6ERsTWrhSubHoVkNtaP--_ly/exec';
+    const SCRIPT_URL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT';
     
-    contactForm.addEventListener('submit', async function(e) {
+    // Asegúrate de que esta función sea ASYNC
+    contactForm.addEventListener('submit', async function(e) { // <-- Agrega async aquí
         e.preventDefault();
         
         // Validar el checkbox de privacidad
@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Validar campos obligatorios
-            if (!formData.lugarFecha || !formData.asunto || !formData.cuerpo || 
-                !formData.nombre || !formData.email) {
-                throw new Error('Por favor complete todos los campos obligatorios');
+            const requiredFields = ['lugarFecha', 'asunto', 'cuerpo', 'nombre', 'email'];
+            const missingFields = requiredFields.filter(field => !formData[field]);
+            
+            if (missingFields.length > 0) {
+                throw new Error('Por favor complete: ' + missingFields.join(', '));
             }
             
             // Enviar datos a Google Apps Script
@@ -57,11 +59,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 showStatusMessage(result.message, 'success');
                 contactForm.reset();
             } else {
-                throw new Error(result.message);
+                throw new Error(result.message || 'Error desconocido');
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            showStatusMessage(error.message || 'Error de conexión. Por favor, intente nuevamente.', 'error');
+            
+            // Mensajes específicos según el tipo de error
+            let errorMessage = error.message;
+            
+            if (error.message.includes('Failed to fetch')) {
+                errorMessage = 'Error de conexión. Verifique su acceso a internet.';
+            } else if (error.message.includes('Unexpected token')) {
+                errorMessage = 'Respuesta inesperada del servidor.';
+            }
+            
+            showStatusMessage(errorMessage, 'error');
         } finally {
             loader.style.display = 'none';
         }
@@ -69,46 +81,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para mostrar mensajes de estado
     function showStatusMessage(message, type) {
-        statusMessage.innerHTML = message;
-        statusMessage.className = 'status-message'; // Resetear clases
+        statusMessage.innerHTML = `<strong>${type === 'success' ? '✓' : '✗'}</strong> ${message}`;
+        statusMessage.className = 'status-message';
         statusMessage.classList.add(`status-${type}`);
         statusMessage.style.display = 'block';
         
         // Desplazar la vista al mensaje
         statusMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Ocultar el mensaje después de 10 segundos (solo para éxito)
-        if (type === 'success') {
-            setTimeout(() => {
-                statusMessage.style.display = 'none';
-            }, 10000);
-        }
+        // Ocultar el mensaje después de 10 segundos
+        setTimeout(() => {
+            statusMessage.style.display = 'none';
+        }, 10000);
     }
 });
-
-// Función para manejar errores de la API
-function handleApiError(response) {
-    if (!response.ok) {
-        // Error HTTP (404, 500, etc.)
-        return `Error ${response.status}: ${response.statusText}`;
-    }
-    return null;
-}
-
-// Luego modifica el bloque de fetch:
-const response = await fetch(SCRIPT_URL, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-});
-
-// Verificar errores HTTP
-const httpError = handleApiError(response);
-if (httpError) {
-    throw new Error(httpError);
-}
-
-// Procesar respuesta JSON
-const result = await response.json();
