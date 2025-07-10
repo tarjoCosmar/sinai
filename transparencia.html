@@ -552,6 +552,36 @@
                             });
                         </script>
             </p>
+            <p class="tabulacion_3">PRESUPUESTO 2024
+                        <button onclick="abrirPDF()"><a href="documentos/rendición_de_cuentas/2024/PRESUPUESTO 2024.pdf"><img src="img/iconos/leer.png" width="25" height="25"> </a></button>
+                        <button class="abrirArchivo" data-archivo="documentos/rendición_de_cuentas/2024/PRESUPUESTO 2024.pdf"><img src="img/iconos/descargar.png" width="25" height="25">  </button>
+                        <script>
+                            // Función para abrir archivos en otra ventana usando atributos personalizados
+                            document.querySelectorAll('.abrirArchivo').forEach(function(boton) {
+                                boton.addEventListener('click', function() {
+                                    var archivo = this.getAttribute('data-archivo');
+                                    if (archivo) {
+                                        window.open(archivo, '_blank');
+                                    }
+                                });
+                            });
+                        </script>
+            </p>
+            <p class="tabulacion_3">RENDICIÓN DE CUENTAS 2024
+                        <button onclick="abrirPDF()"><a href="documentos/rendición_de_cuentas/2024/RENDICION DE CUENTAS 2024.pdf"><img src="img/iconos/leer.png" width="25" height="25"> </a></button>
+                        <button class="abrirArchivo" data-archivo="documentos/rendición_de_cuentas/2024/RENDICION DE CUENTAS 2024.pdf"><img src="img/iconos/descargar.png" width="25" height="25">  </button>
+                        <script>
+                            // Función para abrir archivos en otra ventana usando atributos personalizados
+                            document.querySelectorAll('.abrirArchivo').forEach(function(boton) {
+                                boton.addEventListener('click', function() {
+                                    var archivo = this.getAttribute('data-archivo');
+                                    if (archivo) {
+                                        window.open(archivo, '_blank');
+                                    }
+                                });
+                            });
+                        </script>
+            </p>
         </details> 
         <details>
            <summary>Redndición de cuentas 2023</summary> 
