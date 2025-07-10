@@ -129,36 +129,9 @@
             <p>cel: 0985323502 / email: tarjo_cm@hotmail.com</p>
         </div>
   </footer>
-   
- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/nav.js"></script>
-  <script>
-    // Manejo del formulario
-    document.getElementById('formalForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Deshabilitar el botón de envío para evitar múltiples envíos
-      const submitButton = this.querySelector('.btn-enviar');
-      submitButton.disabled = true;
-      
-      // Obtener los datos del formulario
-      const formData = new FormData(this);
-      const data = {};
-      formData.forEach((value, key) => { data[key] = value });
-      
-      // Enviar los datos al servidor
-      google.script.run
-        .withSuccessHandler((response) => {
-          alert('¡Formulario enviado exitosamente! Recibirá una confirmación pronto.');
-          this.reset();
-          submitButton.disabled = false;
-        })
-        .withFailureHandler((error) => {
-          alert('Error al enviar el formulario: ' + error.message);
-          submitButton.disabled = false;
-        })
-        .processForm(data);
-    });
-  </script>
+  <script src="js/contact-form.js"></script>
 </body>
 </html>
