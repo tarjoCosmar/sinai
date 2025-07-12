@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!contactForm) return;
     
     // URL de tu Google Apps Script
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhZgIWdYAQLiJrk8HC9hAWoGaV1XJbnu-J_V7kTbEa6ERsTWrhSubHoVkNtaP--_ly/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwleQks_f4IVFCOfjpaDFkpxxBbgeIdWiJTf9AejhAFNr3KUE-o8dX7L3HuHNu_zZdk/exec';
     
     // Asegúrate de que esta función sea ASYNC
     contactForm.addEventListener('submit', async function(e) {
