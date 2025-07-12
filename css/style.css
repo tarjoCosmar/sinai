@@ -1218,3 +1218,39 @@ a {
         justify-content: space-between;
     }
 }
+
+/* aprobación de formulario */
+#loader {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+}
+#loader::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.status-message {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+.status-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

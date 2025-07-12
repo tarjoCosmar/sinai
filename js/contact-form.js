@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!contactForm) return;
     
     // URL de tu Google Apps Script
-    const SCRIPT_URL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhZgIWdYAQLiJrk8HC9hAWoGaV1XJbnu-J_V7kTbEa6ERsTWrhSubHoVkNtaP--_ly/exec';
     
     // Asegúrate de que esta función sea ASYNC
-    contactForm.addEventListener('submit', async function(e) { // <-- Agrega async aquí
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Validar el checkbox de privacidad
@@ -35,8 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 telefono: document.getElementById('telefono').value
             };
             
+            // Validar formato de correo y teléfono
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^\+593\d{9}$/;
+            if (!emailRegex.test(formData.email)) {
+                throw new Error('Por favor ingrese un correo electrónico válido');
+            }
+            if (!phoneRegex.test(formData.telefono)) {
+                throw new Error('Por favor ingrese un número de teléfono válido (Ej: +593981234567)');
+            }
+            
             // Validar campos obligatorios
-            const requiredFields = ['lugarFecha', 'asunto', 'cuerpo', 'nombre', 'email'];
+            const requiredFields = ['lugarFecha', 'asunto', 'cuerpo', 'nombre', 'email', 'telefono'];
             const missingFields = requiredFields.filter(field => !formData[field]);
             
             if (missingFields.length > 0) {
