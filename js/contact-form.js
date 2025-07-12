@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!contactForm) return;
     
     // URL de tu Google Apps Script
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwleQks_f4IVFCOfjpaDFkpxxBbgeIdWiJTf9AejhAFNr3KUE-o8dX7L3HuHNu_zZdk/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxD6wxFtMDC_4vm1vjAxr4MTNV9h_4WGFYvpE4NtD3tC26yRfZ-xDWEZ98M64BkMaWR/exec';
     
-    // Asegúrate de que esta función sea ASYNC
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm.addEventListener('submit', function(e) {  // Quitamos async porque usaremos xhr
         e.preventDefault();
         
         // Validar el checkbox de privacidad
@@ -53,33 +52,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Por favor complete: ' + missingFields.join(', '));
             }
             
-            // Enviar datos a Google Apps Script
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            /****************************************************
+             * REEMPLAZO DE FETCH POR XMLHTTPREQUEST (SOLUCIÓN) *
+             ****************************************************/
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', SCRIPT_URL);
+            xhr.setRequestHeader('Content-Type', 'application/json');
             
-            // Manejar respuesta JSON
-            const result = await response.json();
-            
-            if (result.status === "success") {
-                showStatusMessage(result.message, 'success');
-                contactForm.reset();
-            } else {
-                throw new Error(result.message || 'Error desconocido');
-            }
-        } catch (error) {
-            console.error('Detalles del error:', error);
-                let errorMessage = error.message;
-                if (error.name === 'TypeError') {
-                errorMessage = 'Error de conexión con el servidor. Verifica la URL: ' + SCRIPT_URL;
+            xhr.onload = function() {
+                loader.style.display = 'none';
+                
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        showStatusMessage(response.message, 'success');
+                        contactForm.reset();
+                    } else {
+                        throw new Error(response.message || 'Error desconocido');
+                    }
+                } catch (error) {
+                    showStatusMessage('Error procesando respuesta: ' + error.message, 'error');
                 }
-                showStatusMessage(errorMessage, 'error');
+            };
+            
+            xhr.onerror = function() {
+                loader.style.display = 'none';
+                showStatusMessage('Error de conexión con el servidor', 'error');
+            };
+            
+            xhr.send(JSON.stringify(formData));
+            /****************************************************
+             * FIN DEL REEMPLAZO                                *
+             ****************************************************/
+            
+        } catch (error) {
+            loader.style.display = 'none';
+            console.error('Detalles del error:', error);
+            let errorMessage = error.message;
+            
+            if (error.name === 'TypeError') {
+                errorMessage = 'Error de conexión con el servidor. Verifica la URL: ' + SCRIPT_URL;
             }
-            });
+            
+            showStatusMessage(errorMessage, 'error');
+        }
+    });
     
     // Función para mostrar mensajes de estado
     function showStatusMessage(message, type) {
