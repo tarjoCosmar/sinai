@@ -72,22 +72,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(result.message || 'Error desconocido');
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            
-            // Mensajes específicos según el tipo de error
-            let errorMessage = error.message;
-            
-            if (error.message.includes('Failed to fetch')) {
-                errorMessage = 'Error de conexión. Verifique su acceso a internet.';
-            } else if (error.message.includes('Unexpected token')) {
-                errorMessage = 'Respuesta inesperada del servidor.';
+            console.error('Detalles del error:', error);
+                let errorMessage = error.message;
+                if (error.name === 'TypeError') {
+                errorMessage = 'Error de conexión con el servidor. Verifica la URL: ' + SCRIPT_URL;
+                }
+                showStatusMessage(errorMessage, 'error');
             }
-            
-            showStatusMessage(errorMessage, 'error');
-        } finally {
-            loader.style.display = 'none';
-        }
-    });
+            });
     
     // Función para mostrar mensajes de estado
     function showStatusMessage(message, type) {
