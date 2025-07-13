@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cuerpo: document.getElementById('cuerpo').value,
         nombre: document.getElementById('nombre').value,
         email: document.getElementById('email').value,
-        telefono: document.getElementById('telefono').value
+        telefono: document.getElementById('telefono').value,
+        destinatario: document.getElementById('destinatario').value
       };
 
       console.log('Enviando solicitud POST con datos:', formData);
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('Por favor ingrese un número de teléfono válido (Ej: +593981234567)');
       }
 
-      const requiredFields = ['lugarFecha', 'asunto', 'cuerpo', 'nombre', 'email'];
+      const requiredFields = ['lugarFecha', 'asunto', 'cuerpo', 'nombre', 'email', 'destinatario'];
       const missingFields = requiredFields.filter(field => !formData[field] || formData[field].trim() === '');
       if (missingFields.length > 0) {
         const fieldNames = {
@@ -53,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
           asunto: 'Asunto',
           cuerpo: 'Mensaje',
           nombre: 'Nombre completo',
-          email: 'Correo electrónico'
+          email: 'Correo electrónico',
+          destinatario: 'Destinatario'
         };
         const displayMissingFields = missingFields.map(field => fieldNames[field] || field);
         throw new Error('Por favor complete todos los campos obligatorios: ' + displayMissingFields.join(', '));
