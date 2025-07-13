@@ -61,12 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
       await fetch(SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // Cambiado a 'no-cors' para evitar bloqueo de CORS
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
-      // Con 'no-cors', no podemos leer la respuesta, pero asumimos éxito
+      // Ocultar el loader y mostrar mensaje de éxito
+      loader.style.display = 'none';
       showStatusMessage('Mensaje enviado al GAD Parroquial Sinaí', 'success');
       contactForm.reset();
     } catch (error) {
