@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziVunsNgiVgB9tu1bfeLzKIVVu7mCxdGG4De_sffU3SADXAAhsiMB9adFXIwYOeSLwBA/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjFA5zPQ0Y9Yw5HzC874_HGZX2YU5u2ptQumlhL5Jp3-7fUYb9AAJtaxvpwwHAghjp7A/exec';
 
   contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
